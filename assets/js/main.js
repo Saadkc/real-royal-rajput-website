@@ -64,18 +64,18 @@
   const hero = document.querySelector('.hero-photo');
   if (hero) {
     const slides = [
-      ['photo-1512453979798-5ea266f8880c', 'Dubai skyline and modern architecture at dusk', 'A NEW PERSPECTIVE ON CONSTRUCTION'],
-      ['photo-1511818966892-d7d671e672a2', 'Sculptural contemporary architectural facade', 'DESIGN THAT LOOKS BEYOND THE ORDINARY'],
-      ['photo-1486406146926-c627a92ad1ab', 'Glass towers viewed from below', 'AMBITION, BUILT FROM THE GROUND UP']
+      ['https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2200&q=85', 'Dubai skyline and modern architecture at dusk', 'DUBAI SKYLINE · ARCHITECTURAL INSPIRATION', 'center 54%'],
+      ['assets/images/dubai-frame.jpg', 'The golden Dubai Frame in Zabeel Park, Dubai', 'DUBAI FRAME · ARCHITECTURAL INSPIRATION', 'center 20%'],
+      ['assets/images/sheikh-zayed-grand-mosque.jpg', 'White domes of Sheikh Zayed Grand Mosque in Abu Dhabi', 'SHEIKH ZAYED GRAND MOSQUE · ABU DHABI', 'center 45%']
     ];
     let current = 0, request = 0;
     document.querySelectorAll('[data-slide]').forEach(button => button.addEventListener('click', () => {
       current = (current + Number(button.dataset.slide) + slides.length) % slides.length;
-      const next = current, token = ++request, [id, alt, caption] = slides[next], preload = new Image();
+      const next = current, token = ++request, [src, alt, caption, position] = slides[next], preload = new Image();
       hero.classList.add('changing');
       preload.onload = () => {
         if (token !== request) return;
-        hero.src = preload.src; hero.alt = alt;
+        hero.src = preload.src; hero.alt = alt; hero.style.objectPosition = position;
         const label = document.querySelector('.hero-caption');
         if (label) {
           label.replaceChildren();
@@ -85,7 +85,7 @@
         hero.classList.remove('changing');
       };
       preload.onerror = () => { if (token === request) hero.classList.remove('changing'); };
-      preload.src = `https://images.unsplash.com/${id}?auto=format&fit=crop&w=2200&q=85`;
+      preload.src = src;
     }));
   }
   const form = document.querySelector('[data-enquiry]');

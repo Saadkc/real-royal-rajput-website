@@ -12,11 +12,12 @@ Home, About, Expertise, Projects, six project detail pages, Responsibility, Insi
 
 ## Before launch
 
-- Replace `assets/images/brand-mark.svg` with the supplied company logo; adjust shared brand markup if its proportions differ.
+- The supplied company logo is in `assets/images/rrr-logo.jpg`. Its original black background is retained and matched by the header, footer, and logo treatments.
 - Replace illustrative project names, figures, role descriptions, and draft company copy with verified information.
 - Replace Unsplash reference photos with original project photography. Fonts and photos currently require internet access.
+- Dubai Frame and Sheikh Zayed Grand Mosque photography is stored locally in `assets/images/`; the hero slideshow, homepage, and About page use these as labelled architectural inspiration. Photographer credits and source/licence links are in `assets/images/CREDITS.md`.
 - The contact form is intentionally a demo: validation, success confirmation, reset, and optional local download work without sending or storing any data. No form service or backend is connected.
-- Add verified company contact details.
+- Company location: Al Ain, Abu Dhabi, UAE. Phone: +971 56 960 5525. WhatsApp: +971 50 235 0676. These are linked from Contact and every page footer.
 
 ## Design research
 
@@ -34,6 +35,6 @@ Includes keyboard navigation, reduced-motion support, responsive layouts, manual
 
 The generated HTML is committed directly, so no dependency installation or GitHub Actions configuration is required. `.nojekyll` disables Jekyll processing. Relative asset and navigation paths work under the repository subdirectory. After editing page templates, run `node scripts/build.mjs` and upload/commit the regenerated HTML too. `node scripts/check.mjs` checks the local links before publishing.
 
-The demo contact form works on GitHub Pages without a backend. A real email-delivery form would require a separate form service or server; this project does not send email. Dummy contact details use a reserved `.example` address. Do not add email passwords or API secrets to a public repository.
+The demo contact form works on GitHub Pages without a backend. A real email-delivery form would require a separate form service or server; this project does not send email. Phone and WhatsApp links open the corresponding apps independently of the demo form. Do not add email passwords or API secrets to a public repository.
 
 Official instructions: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site

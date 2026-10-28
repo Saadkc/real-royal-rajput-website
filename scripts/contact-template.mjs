@@ -3,8 +3,9 @@ export const contactContent = ({intro,services,eyebrow,arrow}) => `${intro('LET�
  <aside class="contact-aside">
   <h2>A good project starts<br>with a good conversation.</h2>
   <p>Share your ideas, your priorities, and where you are in the journey.</p>
-  <div class="contact-info"><span class="eyebrow">VISIT OUR OFFICE</span><h3>Dubai, United Arab Emirates</h3><p>Suite 1204, Royal Business Centre<br>Business Bay, Dubai, UAE</p><small class="contact-sample">Sample office address</small></div>
-  <div class="contact-info"><span class="eyebrow">CALL OR EMAIL</span><p class="contact-detail">+971 0 000 0000<br>hello@realroyalrajput.example</p><small class="contact-sample">Dummy contact details · Not monitored</small></div>
+  <div class="contact-info"><span class="eyebrow">OUR LOCATION</span><h3>Al Ain, Abu Dhabi, UAE</h3><p>Construction, contracting & transport.</p></div>
+  <div class="contact-info"><span class="eyebrow">CALL OUR TEAM</span><a class="contact-direct" href="tel:+971569605525">+971 56 960 5525 <span aria-hidden="true">↗</span></a></div>
+  <div class="contact-info"><span class="eyebrow">CHAT ON WHATSAPP</span><a class="contact-direct" href="https://wa.me/971502350676" target="_blank" rel="noopener noreferrer">+971 50 235 0676 <span aria-hidden="true">↗</span></a><p>Start a conversation about your next project.</p></div>
   <div class="contact-info"><span class="eyebrow">HOW WE CAN HELP</span><p>New project enquiries<br>Design & construction consultations<br>Partnerships & general enquiries</p></div>
   <div class="contact-note" data-contact-note>Demo form — try the enquiry experience. Details are not sent or stored.</div>
  </aside>
