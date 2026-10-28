@@ -17,7 +17,7 @@ Home, About, Expertise, Projects, six project detail pages, Responsibility, Insi
 - Replace Unsplash reference photos with original project photography. Fonts and photos currently require internet access.
 - Dubai Frame and Sheikh Zayed Grand Mosque photography is stored locally in `assets/images/`; the hero slideshow, homepage, and About page use these as labelled architectural inspiration. Photographer credits and source/licence links are in `assets/images/CREDITS.md`.
 - The contact form is intentionally a demo: validation, success confirmation, reset, and optional local download work without sending or storing any data. No form service or backend is connected.
-- Company location: Al Ain, Abu Dhabi, UAE. Phone: +971 56 960 5525. WhatsApp: +971 50 235 0676. These are linked from Contact and every page footer.
+- Company location: Al Ain, Abu Dhabi, UAE. Phone: +971 56 960 5525. WhatsApp: +971 50 2350 676. These are linked from Contact and every page footer.
 
 ## Design research
 

@@ -84,7 +84,7 @@
 :root{--brand-wordmark-width:220px}
 .header .brand>span,.footer .brand>span{width:var(--brand-wordmark-width);min-width:var(--brand-wordmark-width);flex-shrink:0}
 .header .brand .brand-wordmark,.footer .brand .brand-wordmark{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;background:#000}
-.header .brand .brand-tagline,.footer .brand .brand-tagline{display:block;text-align:left;width:100%;max-width:none;font-family:var(--display);font-size:calc(var(--brand-wordmark-width) * .043);font-weight:600;font-style:normal;line-height:1.7;letter-spacing:0;white-space:nowrap;margin-top:5px}
+.header .brand .brand-tagline,.footer .brand .brand-tagline{display:block;text-align:left;width:100%;max-width:none;font-family:var(--display);font-size:calc(var(--brand-wordmark-width) * .043);font-weight:600;font-style:normal;line-height:1.7;letter-spacing:0;white-space:pre;margin-top:5px}
 .whatsapp-float{position:fixed;right:max(24px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));z-index:90;display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:26%;overflow:hidden;background:#242122;color:#fff;transition:opacity .2s}
 /* Show the golden icon on the right of the supplied two-icon image. */
 .whatsapp-float img{position:absolute;display:block;width:235.07%;height:134.36%;max-width:none;left:-122.04%;top:-14.45%}
