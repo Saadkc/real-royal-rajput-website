@@ -19,5 +19,5 @@ for(const file of pages){
  }
  for(const match of html.matchAll(/<img\b[^>]*>/g))assert.match(match[0],/alt="[^"]*"/,`${file}: image alternative text`);
 }
-assert.equal(pages.length,19,'Expected 19 complete pages');
+assert.equal(pages.length,22,'Expected 22 complete pages');
 console.log(`Passed: ${pages.length} pages, ${checked} local asset/link/anchor references, page headings, brand titles, image alternative text, and no empty links.`);

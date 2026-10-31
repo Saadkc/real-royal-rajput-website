@@ -4,11 +4,11 @@ A responsive construction company website in the requested gold, black, ivory, a
 
 ## Editing
 
-Page source lives in `scripts/build.mjs`. Change its content, then run `npm run build` to regenerate all 19 HTML pages. Shared styling is in `assets/css/style.css`; browser interactions are in `assets/js/main.js`. Run `npm run check` to verify internal links, assets, anchors, heading structure, and image alternative text.
+Page source lives in `scripts/build.mjs`. Change its content, then run `npm run build` to regenerate all 22 HTML pages. Division copy and layouts live in `scripts/division-pages.mjs`. Shared styling is in `assets/css/style.css`; browser interactions are in `assets/js/main.js`. Run `npm run check` to verify internal links, assets, anchors, heading structure, and image alternative text.
 
 ## Pages
 
-Home, About, Expertise, Projects, six project detail pages, Responsibility, Insights, three articles, Careers, Contact, Privacy, and 404.
+Home, About, Expertise, Construction, Contracting, Transport, Projects, six project detail pages, Responsibility, Insights, three articles, Careers, Contact, Privacy, and 404.
 
 ## Before launch
 

@@ -14,7 +14,10 @@
   updateScroll();
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#main-nav');
+  const explore = nav?.querySelector('.nav-explore');
+  const exploreTrigger = explore?.querySelector('summary');
   const closeMenu = () => {
+    if (explore) explore.open = false;
     nav?.classList.remove('open');
     toggle?.setAttribute('aria-expanded', 'false');
     toggle?.setAttribute('aria-label', 'Open navigation');
@@ -26,8 +29,18 @@
     toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
   });
   nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && nav?.classList.contains('open')) { closeMenu(); toggle.focus(); } });
-  document.addEventListener('click', event => { if (!header?.contains(event.target)) closeMenu(); });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    if (explore?.open) { explore.open = false; exploreTrigger.focus(); }
+    else if (nav?.classList.contains('open')) { closeMenu(); toggle.focus(); }
+  });
+  document.addEventListener('click', event => {
+    if (explore?.open && !explore.contains(event.target)) explore.open = false;
+    if (!header?.contains(event.target)) closeMenu();
+  });
+  explore?.addEventListener('focusout', event => {
+    if (!explore.contains(event.relatedTarget)) explore.open = false;
+  });
   matchMedia('(min-width: 1181px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
   if ('IntersectionObserver' in window && !reducedMotion) {
     document.documentElement.classList.add('motion-ready');

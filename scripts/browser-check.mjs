@@ -32,6 +32,7 @@ try{
    assert.ok(layout.h1,`${page} heading renders`);
    assert.equal(await evaluate(`document.querySelectorAll('#main-nav a[href="contact.html"]').length`),1,`${page}: Contact navigation exists once`);
    if(layout.broken.length)console.log(`Image warning ${page}: ${layout.broken.join(', ')}`);
+   if(['contracting.html','transport.html'].includes(page)&&[1440,390].includes(size.width))await shot(`${page.replace('.html','')}-${size.width}`);
    if(page==='index.html'){
     await shot(`home-${size.width}`);
     await evaluate(`scrollTo(0,950)`);await new Promise(r=>setTimeout(r,1000));await shot(`home-intro-${size.width}`);
@@ -64,6 +65,23 @@ try{
  assert.equal(await evaluate(`window.__formRequests`),0,'Demo sends no network requests');
  await evaluate(`document.querySelector('#contact-form').scrollIntoView({block:'start'})`);
  await shot('contact-mobile');
+ for(const width of [1440,768,390]){
+  await call('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<700});
+  await navigate('index.html');
+  if(width<=1180)await evaluate(`document.querySelector('.menu-toggle').click()`);
+  await evaluate(`document.querySelector('.nav-explore summary').click()`);
+  assert.equal(await evaluate(`document.querySelector('.nav-explore').open`),true,'Explore opens');
+  assert.deepEqual(await evaluate(`[...document.querySelectorAll('.explore-panel a')].map(a=>a.getAttribute('href'))`),['construction.html','contracting.html','transport.html'],'Explore contains the three divisions');
+  assert.equal(await evaluate(`document.querySelector('#main-nav a[href="insights.html"]')`),null,'Insights removed from main navigation');
+  assert.ok(await evaluate(`(() => {const r=document.querySelector('.explore-panel').getBoundingClientRect();return r.left>=0&&r.right<=innerWidth&&r.width>0})()`),'Explore fits the viewport');
+  await shot(`explore-${width}`);
+  await call('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+  assert.equal(await evaluate(`document.querySelector('.nav-explore').open`),false,'Escape closes Explore');
+  assert.equal(await evaluate(`document.activeElement===document.querySelector('.nav-explore summary')`),true,'Escape restores focus');
+  if(width<=1180)assert.equal(await evaluate(`document.querySelector('#main-nav').classList.contains('open')`),true,'Escape leaves mobile navigation open');
+  await evaluate(`document.querySelector('.nav-explore summary').click();document.querySelector('main').click()`);
+  assert.equal(await evaluate(`document.querySelector('.nav-explore').open`),false,'Outside click closes Explore');
+ }
  assert.deepEqual(errors,[],'No browser JavaScript exceptions');
  console.log(`Passed browser QA: ${pages.length} pages at ${sizes.length} widths (320–1440px), no horizontal overflow, Contact navigation, filters, mobile menu, form validation, prefill, local download, demo success, form reset, and no submission requests. Screenshots: .preview/.`);
 }finally{if(socket?.readyState===WebSocket.OPEN){socket.send(JSON.stringify({id:9999,method:'Browser.close'}));socket.close();}else browser.kill();}
